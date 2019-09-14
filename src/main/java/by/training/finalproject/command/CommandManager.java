@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class CommandManager {
     private enum CommandType {
-        SIGN_UP, UNKNOWN
+        SIGN_UP, SIGN_IN, UNKNOWN
     }
 
     private static Map<CommandType, Command> commandMap;
@@ -13,13 +13,12 @@ public class CommandManager {
     static {
         commandMap = new HashMap<>();
         commandMap.put(CommandType.SIGN_UP, new SignUpCommand());
+        commandMap.put(CommandType.SIGN_IN, new SignInCommand());
     }
 
     public static Command getCommand(String commandName) {
-        CommandType commandType = CommandType.UNKNOWN;
-
         //try {
-        commandType = CommandType.valueOf(commandName.toUpperCase());
+        CommandType commandType = CommandType.valueOf(commandName.toUpperCase());
         //} catch (Exception e) {
         //LOGGER.error(e);
         //}
