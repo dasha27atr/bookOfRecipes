@@ -1,0 +1,7 @@
+DAO для:
+- User  +
+- Recipe  +
+- Marks  +
+- TypeOfUser  +
+- Comments  +
+- CathegoriesOfRecipes  +
