@@ -9,7 +9,22 @@ public class User {
     private String phone;
     private String firstName;
     private String lastName;
+    private String photo = "https://icon-library.net/images/default-user-icon/default-user-icon-8.jpg";
     private Integer type;
+
+    public User() {
+    }
+
+    public User(String login, String password, String email, String address, String phone, String firstName, String lastName, Integer type) {
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.address = address;
+        this.phone = phone;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.type = type;
+    }
 
     public Integer getUserId() {
         return userId;
@@ -73,6 +88,14 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public Integer getType() {

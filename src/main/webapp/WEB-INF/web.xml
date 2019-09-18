@@ -10,46 +10,6 @@
     <url-pattern>/book</url-pattern>
   </servlet-mapping>
 
-  <servlet>
-    <servlet-name>Dispatcher</servlet-name>
-    <servlet-class>by.training.finalproject.servlets.Dispatcher</servlet-class>
-  </servlet>
-
-  <servlet>
-    <servlet-name>CheckUser</servlet-name>
-    <servlet-class>by.training.finalproject.servlets.CheckUser</servlet-class>
-  </servlet>
-
-  <servlet>
-    <servlet-name>Registration</servlet-name>
-    <servlet-class>by.training.finalproject.servlets.Registration</servlet-class>
-  </servlet>
-
-  <servlet>
-    <servlet-name>AddUser</servlet-name>
-    <servlet-class>by.training.finalproject.servlets.AddUser</servlet-class>
-  </servlet>
-
-  <servlet-mapping>
-    <servlet-name>Dispatcher</servlet-name>
-    <url-pattern>/Dispatcher</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>CheckUser</servlet-name>
-    <url-pattern>/CheckUser</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>Registration</servlet-name>
-    <url-pattern>/Registration</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>AddUser</servlet-name>
-    <url-pattern>/AddUser</url-pattern>
-  </servlet-mapping>
-
   <session-config><session-timeout>
     30
   </session-timeout></session-config><welcome-file-list><welcome-file>

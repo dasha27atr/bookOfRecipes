@@ -13,27 +13,27 @@ public class UserDAOImpl implements UserDAO {
     private ConnectionPool connectionPool = ConnectionPool.getInstance();
 
     private static final String SQL_INSERT_USER =
-            "INSERT INTO users (login, password, email, address, phone, firstName, lastName, type) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            "INSERT INTO users (login, password, email, address, phone, firstName, lastName, photo, type) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String SQL_LIST_USER_ORDER_BY_ID =
-            "SELECT users.userId, login, password, email, address, phone, firstName, lastName, typesOfUsers.type " +
+            "SELECT users.userId, login, password, email, address, phone, firstName, lastName, photo, typesofusers.type " +
                     "FROM users INNER JOIN typesOfUsers ON users.type = typesOfUsers.typeId " +
                     "ORDER BY users.userId";
     private static final String SQL_FIND_USER_BY_ID =
-            "SELECT users.userId, login, password, email, address, phone, firstName, lastName, typesOfUsers.type " +
+            "SELECT users.userId, login, password, email, address, phone, firstName, lastName, photo, typesOfUsers.type " +
                     "FROM users INNER JOIN typesOfUsers ON users.type = typesOfUsers.typeId " +
                     "WHERE users.userId = ?";
     private static final String SQL_UPDATE_USER =
-            "UPDATE users SET login = ?, password = ?, email = ?, address = ?, phone = ?, firstName = ?, lastName = ?, typesOfUsers.type = ? " +
+            "UPDATE users SET login = ?, password = ?, email = ?, address = ?, phone = ?, firstName = ?, lastName = ?, photo = ?, type = ? " +
                     "WHERE users.userId = ?";
     private static final String SQL_DELETE_USER =
             "DELETE FROM users WHERE users.userId = ?";
     private static final String SQL_FIND_USER_BY_LOGIN =
-            "SELECT users.userId, login, password, email, address, phone, firstName, lastName, typesOfUsers.type " +
+            "SELECT users.userId, login, password, email, address, phone, firstName, lastName, photo, typesOfUsers.type " +
                     "FROM users INNER JOIN typesOfUsers ON users.type = typesOfUsers.typeId " +
                     "WHERE login = ?";
     private static final String SQL_FIND_USER_BY_EMAIL =
-            "SELECT users.userId, login, password, email, address, phone, firstName, lastName, typesOfUsers.type " +
+            "SELECT users.userId, login, password, email, address, phone, firstName, lastName, photo, typesOfUsers.type " +
                     "FROM users INNER JOIN typesOfUsers ON users.type = typesOfUsers.typeId " +
                     "WHERE email = ?";
     private static final String SQL_EXIST_LOGIN =
@@ -54,7 +54,10 @@ public class UserDAOImpl implements UserDAO {
             preparedStatement.setString(5, entity.getPhone());
             preparedStatement.setString(6, entity.getFirstName());
             preparedStatement.setString(7, entity.getLastName());
-            preparedStatement.setInt(8, entity.getType());
+            preparedStatement.setString(8, entity.getPhoto());
+            preparedStatement.setInt(9, entity.getType());
+
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new DAOException(e);
         } finally {
@@ -88,7 +91,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void update(User entity) throws DAOException {
+    public void update(User entity, int userId) throws DAOException {
         Connection connection = null;
         try {
             connection = connectionPool.retrieveConnection();
@@ -100,8 +103,10 @@ public class UserDAOImpl implements UserDAO {
             preparedStatement.setString(5, entity.getPhone());
             preparedStatement.setString(6, entity.getFirstName());
             preparedStatement.setString(7, entity.getLastName());
-            preparedStatement.setInt(8, entity.getType());
-            preparedStatement.setInt(9, entity.getUserId());
+            preparedStatement.setString(8,entity.getPhoto());
+            preparedStatement.setInt(9, entity.getType());
+            preparedStatement.setInt(10, userId);
+
         } catch (SQLException e) {
             throw new DAOException(e);
         } finally {
@@ -110,12 +115,12 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void delete(User entity) throws DAOException {
+    public void delete(int userId) throws DAOException {
         Connection connection = null;
         try {
             connection = connectionPool.retrieveConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_USER);
-            preparedStatement.setInt(1, entity.getUserId());
+            preparedStatement.setInt(1, userId);
         } catch (SQLException e) {
             throw new DAOException(e);
         } finally {
@@ -140,6 +145,7 @@ public class UserDAOImpl implements UserDAO {
         try {
             connection = connectionPool.retrieveConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_EXIST_LOGIN);
+            preparedStatement.setString(1, login);
             ResultSet resultSet = preparedStatement.executeQuery();
             exist = resultSet.next();
         } catch (SQLException e) {
@@ -185,15 +191,19 @@ public class UserDAOImpl implements UserDAO {
     }
 
     private static User parseResultSet(ResultSet resultSet, User user) throws SQLException {
-        user.setUserId(resultSet.getInt("userId"));
-        user.setLogin(resultSet.getString("login"));
-        user.setPassword(resultSet.getString("password"));
-        user.setEmail(resultSet.getString("email"));
-        user.setAddress(resultSet.getString("address"));
-        user.setPhone(resultSet.getString("phone"));
-        user.setFirstName(resultSet.getString("firstName"));
-        user.setLastName(resultSet.getString("lastName"));
-        user.setType(resultSet.getInt("type"));
+        if (resultSet.next()) {
+            user.setUserId(resultSet.getInt("userId"));
+            user.setLogin(resultSet.getString("login"));
+            user.setPassword(resultSet.getString("password"));
+            user.setEmail(resultSet.getString("email"));
+            user.setAddress(resultSet.getString("address"));
+            user.setPhone(resultSet.getString("phone"));
+            user.setFirstName(resultSet.getString("firstName"));
+            user.setLastName(resultSet.getString("lastName"));
+//            user.setPhoto(resultSet.getString("photo"));
+//            user.setType(resultSet.getInt("type"));
+            user.setType(1);
+        }
         return user;
     }
 

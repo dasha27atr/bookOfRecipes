@@ -17,6 +17,8 @@ public class Program {
             user.setLastName("a");
             user.setType(1);
             userDao.create(user);
+            userDao.findByLogin(user.getLogin());
+            userDao.existLogin(user.getLogin());
             //int rows = statement.executeUpdate("UPDATE Products SET Price = Price + 5000");
             //System.out.printf("Updated %d rows", rows);
             System.out.println("Rabotaet");

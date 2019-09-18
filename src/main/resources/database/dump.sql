@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS `BookOfRecipes`.`Users` (
   `phone` VARCHAR(20) NOT NULL,
   `firstName` VARCHAR(45) NOT NULL,
   `lastName` VARCHAR(45) NOT NULL,
+  `photo` TEXT NOT NULL,
   `type` INT NOT NULL,
   PRIMARY KEY (`userId`),
   UNIQUE INDEX `userLoginUniqueIndex` (`login` ASC),
@@ -40,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `BookOfRecipes`.`Users` (
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
-insert into users (login, password, email, address, phone, firstName, lastName, type) values ('dasha27atr', 'dasha27', 'dasha27atr@gmail.com', 'Panchenko, 76-96', '80447047452', 'Daria', 'Atrashevskaya', 1);
+insert into users (login, password, email, address, phone, firstName, lastName, photo, type) values ('dasha27atr', 'dasha27', 'dasha27atr@gmail.com', 'Panchenko, 76-96', '80447047452', 'Daria', 'Atrashevskaya', 'https://icon-library.net/images/default-user-icon/default-user-icon-8.jpg',1);
 
 -- -----------------------------------------------------
 -- Table `BookOfRecipes`.`CathegoriesOfRecipes`
@@ -62,14 +63,15 @@ CREATE TABLE IF NOT EXISTS `BookOfRecipes`.`Recipes` (
   `name` VARCHAR(45) NOT NULL,
   `userLogin` VARCHAR(45) NOT NULL,
   `uploadDate` DATE NOT NULL,
-  `cathegoryId` INT NOT NULL,
+  `photo` TEXT NOT NULL,
+  `description` TEXT NOT NULL,
+  `categoryId` INT NOT NULL,
   PRIMARY KEY (`recipeId`),
   UNIQUE INDEX `userIdUniqueIndex` (`userLogin` ASC),
   UNIQUE INDEX `recipeIdUniqueIndex` (`recipeId` ASC),
-  UNIQUE INDEX `cathegoryId_UNIQUE` (`cathegoryId` ASC),
   UNIQUE INDEX `name_UNIQUE` (`name` ASC),
   CONSTRAINT `RecipesCathegoriesOfRecipesFK`
-    FOREIGN KEY (`cathegoryId`)
+    FOREIGN KEY (`categoryId`)
     REFERENCES `BookOfRecipes`.`CathegoriesOfRecipes` (`cathegoryOfRecipesId`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,

@@ -7,7 +7,7 @@
     <title>User registration</title>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
-    <link href="css/homePage.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="../css/homePage.css"/>
 </head>
 <body>
 <div id="wrapper">
@@ -35,12 +35,13 @@
                     <a class="nav-link" href="#">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modal">Sign in/up</a>
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modal">Sign in</a>
                     <div id="modal" class="modal fade">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-body">
-                                    <form>
+                        <div class="modal-dialog modal-content">
+                            <div class="modal-body">
+                                <form class="login-page" action="${pageContext.request.contextPath}/book" method="post">
+                                    <input type="hidden" name="command" value="sign_in"/>
+                                    <div class="login-page">
                                         <button class="close" data-dismiss="modal">x</button>
                                         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
                                         <div class="form-group">
@@ -57,25 +58,16 @@
                                             <input type="checkbox" class="form-check-input" id="check">
                                             <label class="form-check-label" for="check">Remember me</label>
                                         </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <form action="CheckUser" method="post">
-                                        <div class="form-row col-lg-6">
-                                            <input type="submit" class="btn btn-danger" name="login"
-                                                   value="Sign in"/>
-                                        </div>
-                                    </form>
-                                    <form action="Registration" method="post">
-                                        <div class="form-row col-lg-6">
-                                            <input type="submit" class="btn btn-danger" name="registration"
-                                                   value="Sign up"/>
-                                        </div>
-                                    </form>
-                                </div>
+                                        <input type="submit" class="btn btn-danger btn-lg-6" name="login"
+                                               value="Sign in"/>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="jsp/registration.jsp">Sign up</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -89,13 +81,14 @@
         <div id="page-bgtop">
             <div id="content">
                 <div class="post">
-                    <h3>User registration</h3>
+                    <br><h3>User registration</h3><br>
                     <h6>
                         After registration, you can add recipes and photos to the site, write reviews and communicate
                         with other project participants.
                     </h6>
-                    <form id="form_id" method="post" action="${pageContext.request.contextPath}">
-                        <form class="register-form">
+                    <form id="registration-form" method="post" action="${pageContext.request.contextPath}/book">
+                        <input type="hidden" name="command" value="sign_up"/>
+                        <div class="registration-page">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="setLogin">Login</label>
@@ -108,42 +101,42 @@
                                            id="setPassword" placeholder="Password" required>
                                 </div>
                             </div>
-<%--                            <div class="form-group">--%>
-<%--                                <label for="setEmail">E-mail</label>--%>
-<%--                                <input type="text" name="email" class="form-control"--%>
-<%--                                       id="setEmail" placeholder="E-mail" required>--%>
-<%--                            </div>--%>
-<%--                            <div class="form-group">--%>
-<%--                                <label for="setAddress">Address</label>--%>
-<%--                                <input type="text" name="address" class="form-control"--%>
-<%--                                       id="setAddress" placeholder="Address" required>--%>
-<%--                            </div>--%>
-<%--                            <div class="form-group">--%>
-<%--                                <label for="setPhone">Phone</label>--%>
-<%--                                <input type="text" name="phone" class="form-control"--%>
-<%--                                       id="setPhone" placeholder="Phone" required>--%>
-<%--                            </div>--%>
-<%--                            <div class="form-group">--%>
-<%--                                <label for="setFirstName">First Name</label>--%>
-<%--                                <input type="text" name="firstName" class="form-control"--%>
-<%--                                       id="setFirstName" placeholder="First Name" required>--%>
-<%--                            </div>--%>
-<%--                            <div class="form-group">--%>
-<%--                                <label for="setLastName">Last Name</label>--%>
-<%--                                <input type="text" name="lastName" class="form-control"--%>
-<%--                                       id="setLastName" placeholder="Last Name" required>--%>
-<%--                            </div>--%>
+                            <div class="form-group">
+                                <label for="setEmail">E-mail</label>
+                                <input type="text" name="email" class="form-control"
+                                       id="setEmail" placeholder="E-mail" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="setAddress">Address</label>
+                                <input type="text" name="address" class="form-control"
+                                       id="setAddress" placeholder="Address" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="setPhone">Phone</label>
+                                <input type="text" name="phone" class="form-control"
+                                       id="setPhone" placeholder="Phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="setFirstName">First Name</label>
+                                <input type="text" name="firstName" class="form-control"
+                                       id="setFirstName" placeholder="First Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="setLastName">Last Name</label>
+                                <input type="text" name="lastName" class="form-control"
+                                       id="setLastName" placeholder="Last Name" required>
+                            </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="termsCheck" required>
                                 <label class="form-check-label" for="termsCheck">Agree to terms and conditions</label>
                             </div>
                             <br>
                             <div class="container form-row">
-                                <input type="submit" class="btn btn-danger col-lg-4" name="save" value="Submit"/> &ensp;
+                                <input type="submit" class="btn btn-danger col-lg-4" name="registration" value="Submit"/> &ensp;
                                 &ensp;
                                 <a href="home.jsp" class="btn btn-danger col-lg-4">Exit</a>
                             </div>
-                        </form>
+                        </div>
                     </form>
                 </div>
             </div>

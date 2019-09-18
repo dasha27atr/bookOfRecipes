@@ -17,7 +17,7 @@ public class SignUpCommand implements Command {
         String page = "/jsp/errorRegistration.jsp";
         Validator validator = ValidatorFactory.getInstance().getSignUpValidator();
         try {
-            if (validator.validate(request)) {
+            if (!validator.validate(request)) {
                 String login = request.getParameter("login");
                 String password = request.getParameter("password");
                 String email = request.getParameter("email");
@@ -25,18 +25,9 @@ public class SignUpCommand implements Command {
                 String phone = request.getParameter("phone");
                 String firstName = request.getParameter("firstName");
                 String lastName = request.getParameter("lastName");
-                Integer type = 2;
-                User newUser = new User();
-                newUser.setLogin(login);
-                newUser.setPassword(password);
-                newUser.setEmail(email);
-                newUser.setAddress(address);
-                newUser.setPhone(phone);
-                newUser.setFirstName(firstName);
-                newUser.setLastName(lastName);
-                newUser.setType(type);
+                Integer type = 1;
+                User newUser = new User(login, password, email, address, phone, firstName, lastName, type);
                 userDAO.create(newUser);
-//                newUser = userDAO.findByLogin(login);
                 page = "/jsp/successRegistration.jsp";
             }
         } catch (DAOException e) {

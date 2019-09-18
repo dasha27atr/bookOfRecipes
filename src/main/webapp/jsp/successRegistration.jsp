@@ -42,12 +42,13 @@
                     <a class="nav-link" href="#">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modal">Sign in/up</a>
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modal">Sign in</a>
                     <div id="modal" class="modal fade">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-body">
-                                    <form>
+                        <div class="modal-dialog modal-content">
+                            <div class="modal-body">
+                                <form class="login-page" action="${pageContext.request.contextPath}/book" method="post">
+                                    <input type="hidden" name="command" value="sign_in"/>
+                                    <div class="login-page">
                                         <button class="close" data-dismiss="modal">x</button>
                                         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
                                         <div class="form-group">
@@ -64,25 +65,16 @@
                                             <input type="checkbox" class="form-check-input" id="check">
                                             <label class="form-check-label" for="check">Remember me</label>
                                         </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <form action="CheckUser" method="post">
-                                        <div class="form-row col-lg-6">
-                                            <input type="submit" class="btn btn-danger" name="login"
-                                                   value="Sign in"/>
-                                        </div>
-                                    </form>
-                                    <form action="Registration" method="post">
-                                        <div class="form-row col-lg-6">
-                                            <input type="submit" class="btn btn-danger" name="registration"
-                                                   value="Sign up"/>
-                                        </div>
-                                    </form>
-                                </div>
+                                        <input type="submit" class="btn btn-danger btn-lg-6" name="login"
+                                               value="Sign in"/>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="jsp/registration.jsp">Sign up</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -96,7 +88,7 @@
         <div id="page-bgtop">
             <div id="content">
                 <div class="post">
-                    <h3>User registration completed successfully!</h3><br>
+                    <br><h3>User registration completed successfully!</h3><br>
                     <a href="home.jsp">Return to the start page</a>
                 </div>
             </div>

@@ -12,7 +12,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Registration error</title>
+    <title>User account</title>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <link href="css/homePage.css" rel="stylesheet" type="text/css"/>
@@ -31,7 +31,7 @@
         <nav class="navbar navbar-light" style="background-color: #CC4646;">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="home.jsp">Home</a>
+                    <a class="nav-link active" href="../home.jsp">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Products</a>
@@ -43,39 +43,21 @@
                     <a class="nav-link" href="#">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modal">Sign in</a>
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modal">Exit</a>
                     <div id="modal" class="modal fade">
                         <div class="modal-dialog modal-content">
-                            <div class="modal-body">
-                                <form class="login-page" action="${pageContext.request.contextPath}/book" method="post">
-                                    <input type="hidden" name="command" value="sign_in"/>
-                                    <div class="login-page">
-                                        <button class="close" data-dismiss="modal">x</button>
-                                        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-                                        <div class="form-group">
-                                            <label for="inputLogin">Login</label>
-                                            <input type="text" name="login" class="form-control" id="inputLogin"
-                                                   placeholder="Enter login" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputPassword">Password</label>
-                                            <input type="password" name="password" class="form-control"
-                                                   id="inputPassword" placeholder="Enter password" required>
-                                        </div>
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="check">
-                                            <label class="form-check-label" for="check">Remember me</label>
-                                        </div>
-                                        <input type="submit" class="btn btn-danger btn-lg-6" name="login"
-                                               value="Sign in"/>
-                                    </div>
-                                </form>
+                            <div class="modal-body sign-out">
+                                <button class="close" data-dismiss="modal">x</button>
+                                <h4 class="h4 mb-3 font-weight-normal">Are you sure you want to sign out?</h4>
+                                <div class="btn-group" role="group">
+                                     <button type="button" class="btn btn-danger">
+                                        <a href="home.jsp">Yes</a>
+                                    </button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="jsp/registration.jsp">Sign up</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -89,8 +71,19 @@
         <div id="page-bgtop">
             <div id="content">
                 <div class="post">
-                    <br><h3>User already exists or incorrect data entered.</h3><br>
-                    <a href="home.jsp">Return to the start page</a>
+                    <div class="account_information">
+                        <div class="row">
+                            <div class="col-md-6">Inf</div>
+                            <div class="card col-md-6" style="width: 18rem;">
+                                <img class="card-img-top float-md-right"
+                                     src="https://icon-library.net/images/default-user-icon/default-user-icon-8.jpg"
+                                     alt="user image" width="160" height="240">
+                                <div class="card-body">
+                                    <a href="#" class="btn btn-danger">Change user information</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- end div#content -->

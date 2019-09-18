@@ -1,6 +1,0 @@
-Страницы с css:
-- errorRegistration
-- login  +
-- registration  +
-- successLogin(?)
-- successRegistration

@@ -23,15 +23,15 @@ public class Controller extends HttpServlet {
 
     private void process(HttpServletRequest request, HttpServletResponse response) {
         //String commandName = request.getParameter(getConst(PAR_COMMAND));
-        String commandName = request.getParameter("");
+        String commandName = request.getParameter("command");
 
         if (commandName != null) {
             Command command = CommandManager.getCommand(commandName);
 
-//            String page = command.execute(request);
-            command.execute(request);
+            String page = command.execute(request);
+//            command.execute(request);
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/successRegistration.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 
             try {
                 dispatcher.forward(request, response);

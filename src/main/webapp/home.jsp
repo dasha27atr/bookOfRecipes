@@ -36,12 +36,13 @@
                     <a class="nav-link" href="#">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modal">Sign in/up</a>
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modal">Sign in</a>
                     <div id="modal" class="modal fade">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-body">
-                                    <form>
+                        <div class="modal-dialog modal-content">
+                            <div class="modal-body">
+                                <form class="login-page" action="${pageContext.request.contextPath}/book" method="post">
+                                    <input type="hidden" name="command" value="sign_in"/>
+                                    <div class="login-page">
                                         <button class="close" data-dismiss="modal">x</button>
                                         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
                                         <div class="form-group">
@@ -58,28 +59,22 @@
                                             <input type="checkbox" class="form-check-input" id="check">
                                             <label class="form-check-label" for="check">Remember me</label>
                                         </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer container">
-                                    <form action="CheckUser" method="post">
                                         <input type="submit" class="btn btn-danger btn-lg-6" name="login"
                                                value="Sign in"/>
-                                    </form>
-                                    <form action="Registration" method="post">
-                                        <input type="submit" class="btn btn-danger btn-lo-6 btn-lg-6"
-                                               name="registration"
-                                               value="Sign up"/>
-                                    </form>
-                                </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="jsp/registration.jsp">Sign up</a>
+                </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
+            <li class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-light" type="submit">Search</button>
-            </form>
+            </li>
         </nav>
     </div>
     <!-- end div#menu -->
@@ -149,41 +144,55 @@
             <div id="sidebar">
                 <ul>
                     <li>
+                        <br>
                         <h2 class="categories">Lorem Ipsum</h2>
-                        <ul>
-                            <li><a href="#">Fusce dui neque fringilla</a></li>
-                            <li><a href="#">Eget tempor eget nonummy</a></li>
-                            <li><a href="#">Magna lacus bibendum mauris</a></li>
-                            <li><a href="#">Nec metus sed donec</a></li>
-                            <li><a href="#">Magna lacus bibendum mauris</a></li>
-                            <li><a href="#">Velit semper nisi molestie</a></li>
-                            <li><a href="#">Eget tempor eget nonummy</a></li>
-                        </ul>
+                        <div class="card" style="width: 12rem; height: 23rem;">
+                            <img src="http://www.good-cook.ru/articles/2016/07/16-1-domashnyaya-eda.jpg"
+                                 class="card-img-top" alt="food">
+                            <div class="card-body">
+                                <h5 class="card-title">Название карточки</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.</p>
+                                <br>
+                                <button type="button" class="btn btn-danger">
+                                    <a href="#" style="color: #FFFFFF">Переход куда-нибудь</a>
+                                </button>
+                            </div>
+                        </div>
                     </li>
                     <li>
+                        <br>
                         <h2>Volutpat Dolore</h2>
-                        <ul>
-                            <li><a href="#">Nec metus sed donec</a></li>
-                            <li><a href="#">Magna lacus bibendum mauris</a></li>
-                            <li><a href="#">Velit semper nisi molestie</a></li>
-                            <li><a href="#">Eget tempor eget nonummy</a></li>
-                            <li><a href="#">Nec metus sed donec</a></li>
-                            <li><a href="#">Magna lacus bibendum mauris</a></li>
-                            <li><a href="#">Velit semper nisi molestie</a></li>
-                        </ul>
+                        <div class="card" style="width: 12rem; height: 23rem;">
+                            <img src="http://www.good-cook.ru/articles/2016/07/16-1-domashnyaya-eda.jpg"
+                                 class="card-img-top" alt="food">
+                            <div class="card-body">
+                                <h5 class="card-title">Название карточки</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.</p>
+                                <br>
+                                <button type="button" class="btn btn-danger">
+                                    <a href="#" style="color: #FFFFFF">Переход куда-нибудь</a>
+                                </button>
+                            </div>
+                        </div>
                     </li>
                     <li>
+                        <br>
                         <h2>Bebindum Mauris </h2>
-                        <ul>
-                            <li><a href="#">Nec metus sed donec</a></li>
-                            <li><a href="#">Magna lacus bibendum mauris</a></li>
-                            <li><a href="#">Velit semper nisi molestie</a></li>
-                            <li><a href="#">Eget tempor eget nonummy</a></li>
-                            <li><a href="#">Nec metus sed donec</a></li>
-                            <li><a href="#">Velit semper nisi molestie</a></li>
-                            <li><a href="#">Eget tempor eget nonummy</a></li>
-                            <li><a href="#">Velit semper nisi molestie</a></li>
-                        </ul>
+                        <div class="card" style="width: 12rem; height: 23rem;">
+                            <img src="http://www.good-cook.ru/articles/2016/07/16-1-domashnyaya-eda.jpg"
+                                 class="card-img-top" alt="food">
+                            <div class="card-body">
+                                <h5 class="card-title">Название карточки</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.</p>
+                                <br>
+                                <button type="button" class="btn btn-danger">
+                                    <a href="#" style="color: #FFFFFF">Переход куда-нибудь</a>
+                                </button>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>

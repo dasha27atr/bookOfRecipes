@@ -21,7 +21,7 @@ public class SignInCommand implements Command {
                 String login = request.getParameter("login");
                 User user = userDao.findByLogin(login);
 
-                page = "/jsp/successLogin.jsp";
+                page = "/jsp/account.jsp";
             } catch (DAOException e) {
                 //something
             }
