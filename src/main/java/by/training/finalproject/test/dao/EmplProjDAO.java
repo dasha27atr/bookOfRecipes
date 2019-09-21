@@ -1,6 +1,6 @@
 package by.training.finalproject.test.dao;
 
-import by.training.finalproject.dao.DAOException;
+import by.training.finalproject.dao.exception.DAOException;
 import by.training.finalproject.test.entity.EmplProj;
 
 import java.util.List;

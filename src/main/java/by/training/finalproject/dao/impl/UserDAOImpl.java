@@ -1,8 +1,9 @@
 package by.training.finalproject.dao.impl;
 
 import by.training.finalproject.connectionPool.ConnectionPool;
-import by.training.finalproject.dao.DAOException;
+import by.training.finalproject.dao.exception.DAOException;
 import by.training.finalproject.dao.UserDAO;
+import by.training.finalproject.dao.exception.UserDAOException;
 import by.training.finalproject.entity.User;
 
 import java.sql.*;
@@ -38,8 +39,6 @@ public class UserDAOImpl implements UserDAO {
                     "WHERE email = ?";
     private static final String SQL_EXIST_LOGIN =
             "SELECT userId FROM users WHERE login = ?";
-//    private static final String SQL_INSERT_ROLE =
-//            "INSERT INTO typesOfUsers (type) VALUES (?)";
 
     @Override
     public void create(User entity) throws DAOException {
@@ -129,17 +128,17 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User findByLogin(String login) throws DAOException {
+    public User findByLogin(String login) throws UserDAOException {
         return prepareStringStatement(SQL_FIND_USER_BY_LOGIN, login);
     }
 
     @Override
-    public User findByEmail(String email) throws DAOException {
+    public User findByEmail(String email) throws UserDAOException {
         return prepareStringStatement(SQL_FIND_USER_BY_EMAIL, email);
     }
 
     @Override
-    public boolean existLogin(String login) throws DAOException {
+    public boolean existLogin(String login) throws UserDAOException {
         boolean exist;
         Connection connection = null;
         try {
@@ -149,14 +148,14 @@ public class UserDAOImpl implements UserDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
             exist = resultSet.next();
         } catch (SQLException e) {
-            throw new DAOException();
+            throw new UserDAOException(e);
         } finally {
             connectionPool.putbackConnection(connection);
         }
         return exist;
     }
 
-    private User prepareStringStatement(String sql, String value) throws DAOException {
+    private User prepareStringStatement(String sql, String value) throws UserDAOException {
         User user = new User();
         Connection connection = null;
         try {
@@ -166,7 +165,7 @@ public class UserDAOImpl implements UserDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
             parseResultSet(resultSet, user);
         } catch (SQLException e) {
-            throw new DAOException(e);
+            throw new UserDAOException(e);
         } finally {
             connectionPool.putbackConnection(connection);
         }
@@ -200,9 +199,6 @@ public class UserDAOImpl implements UserDAO {
             user.setPhone(resultSet.getString("phone"));
             user.setFirstName(resultSet.getString("firstName"));
             user.setLastName(resultSet.getString("lastName"));
-//            user.setPhoto(resultSet.getString("photo"));
-//            user.setType(resultSet.getInt("type"));
-            user.setType(1);
         }
         return user;
     }

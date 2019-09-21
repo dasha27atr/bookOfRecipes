@@ -4,6 +4,7 @@ public class ValidatorFactory {
     private static ValidatorFactory instance = null;
     private final SignUpValidator signUpValidator = new SignUpValidator();
     private final SignInValidator signInValidator = new SignInValidator();
+    private final AddRecipeValidator addRecipeValidator = new AddRecipeValidator();
 
     private ValidatorFactory(){}
 
@@ -20,5 +21,9 @@ public class ValidatorFactory {
 
     public SignInValidator getSignInValidator() {
         return signInValidator;
+    }
+
+    public AddRecipeValidator getAddRecipeValidator() {
+        return addRecipeValidator;
     }
 }

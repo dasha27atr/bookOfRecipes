@@ -1,15 +1,19 @@
 package by.training.finalproject.entity;
 
 public enum TypeOfUser {
-    VISITER("visiter"), CLIENT("client"), ADMINISTRATOR("administrator");
+    USER(1), ADMINISTRATOR(2);
 
-    private String type;
+    private Integer typeOfUserId;
 
-    TypeOfUser(String type) {
-        this.type = type;
+    TypeOfUser(Integer typeOfUserId) {
+        this.typeOfUserId = typeOfUserId;
     }
 
-    public String getType() {
-        return type;
+    public Integer getTypeOfUserId() {
+        return typeOfUserId;
+    }
+
+    public void setTypeOfUserId(Integer typeOfUserId) {
+        this.typeOfUserId = typeOfUserId;
     }
 }

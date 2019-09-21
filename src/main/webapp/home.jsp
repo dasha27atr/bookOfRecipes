@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Culinary by Free Css Templates</title>
+    <title>Book of Recipes</title>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <link href="css/homePage.css" rel="stylesheet" type="text/css"/>
@@ -14,8 +14,8 @@
 <div id="wrapper">
     <div id="header">
         <div id="logo">
-            <h1><a href="#">Culinary</a></h1>
-            <h2><a href="#">Template By Free CSS Templates</a></h2>
+            <h3><a href="#">Book of Recipes</a></h3>
+            <h6><a href="#">Recipes Website</a></h6>
         </div>
         <!-- end div#logo -->
     </div>
@@ -82,6 +82,7 @@
         <div id="page-bgtop">
             <div id="content">
                 <div class="post">
+                    <br>
                     <h2 class="title"><a href="#">Lorem Ipsum Dolor Volutpat</a></h2>
                     <p class="byline">Posted by FreeCssTemplates</p>
                     <div class="entry">
@@ -164,7 +165,7 @@
                         <br>
                         <h2>Volutpat Dolore</h2>
                         <div class="card" style="width: 12rem; height: 23rem;">
-                            <img src="http://www.good-cook.ru/articles/2016/07/16-1-domashnyaya-eda.jpg"
+                            <img src="https://static.1000.menu/img/content/24774/sloenyi-desert-v-stakane_1514977480_1_max.jpg"
                                  class="card-img-top" alt="food">
                             <div class="card-body">
                                 <h5 class="card-title">Название карточки</h5>
@@ -181,7 +182,7 @@
                         <br>
                         <h2>Bebindum Mauris </h2>
                         <div class="card" style="width: 12rem; height: 23rem;">
-                            <img src="http://www.good-cook.ru/articles/2016/07/16-1-domashnyaya-eda.jpg"
+                            <img src="https://img.poehali.tv/img/2018-11-12/fmt_114_24_shutterstock_1195703299.jpg"
                                  class="card-img-top" alt="food">
                             <div class="card-body">
                                 <h5 class="card-title">Название карточки</h5>

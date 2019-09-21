@@ -10,12 +10,12 @@ public class User {
     private String firstName;
     private String lastName;
     private String photo = "https://icon-library.net/images/default-user-icon/default-user-icon-8.jpg";
-    private Integer type;
+    private Integer type = TypeOfUser.USER.getTypeOfUserId();
 
     public User() {
     }
 
-    public User(String login, String password, String email, String address, String phone, String firstName, String lastName, Integer type) {
+    public User(String login, String password, String email, String address, String phone, String firstName, String lastName) {
         this.login = login;
         this.password = password;
         this.email = email;
@@ -23,7 +23,6 @@ public class User {
         this.phone = phone;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.type = type;
     }
 
     public Integer getUserId() {

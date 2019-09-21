@@ -1,6 +1,6 @@
 package by.training.finalproject.command;
 
-import by.training.finalproject.dao.DAOException;
+import by.training.finalproject.dao.exception.DAOException;
 import by.training.finalproject.dao.UserDAO;
 import by.training.finalproject.dao.impl.UserDAOImpl;
 import by.training.finalproject.entity.User;
@@ -25,9 +25,21 @@ public class SignUpCommand implements Command {
                 String phone = request.getParameter("phone");
                 String firstName = request.getParameter("firstName");
                 String lastName = request.getParameter("lastName");
-                Integer type = 1;
-                User newUser = new User(login, password, email, address, phone, firstName, lastName, type);
+
+                User newUser = new User(login, password, email, address, phone, firstName, lastName);
                 userDAO.create(newUser);
+
+                request.getSession().setAttribute("userId", newUser.getUserId());
+                request.getSession().setAttribute("login", newUser.getLogin());
+                request.getSession().setAttribute("password", newUser.getPassword());
+                request.getSession().setAttribute("email", newUser.getEmail());
+                request.getSession().setAttribute("address", newUser.getAddress());
+                request.getSession().setAttribute("phone", newUser.getPhone());
+                request.getSession().setAttribute("firstName", newUser.getFirstName());
+                request.getSession().setAttribute("lastName", newUser.getLastName());
+                request.getSession().setAttribute("photo", newUser.getPhoto());
+                request.getSession().setAttribute("type", newUser.getType());
+
                 page = "/jsp/successRegistration.jsp";
             }
         } catch (DAOException e) {

@@ -42,63 +42,69 @@ CREATE TABLE IF NOT EXISTS `BookOfRecipes`.`Users` (
 ENGINE = InnoDB;
 
 insert into users (login, password, email, address, phone, firstName, lastName, photo, type) values ('dasha27atr', 'dasha27', 'dasha27atr@gmail.com', 'Panchenko, 76-96', '80447047452', 'Daria', 'Atrashevskaya', 'https://icon-library.net/images/default-user-icon/default-user-icon-8.jpg',1);
+insert into users (login, password, email, address, phone, firstName, lastName, photo, type) values ('a', 'a', 'a', 'a', 'a', 'a', 'a', 'https://icon-library.net/images/default-user-icon/default-user-icon-8.jpg', 1);
 
 -- -----------------------------------------------------
--- Table `BookOfRecipes`.`CathegoriesOfRecipes`
+-- Table `BookOfRecipes`.`CategoriesOfRecipes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `BookOfRecipes`.`CathegoriesOfRecipes` (
-  `cathegoryOfRecipesId` INT NOT NULL,
-  `cathegory` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`cathegoryOfRecipesId`),
-  UNIQUE INDEX `cathegoryOfRecipesIdUniqueIndex` (`cathegoryOfRecipesId` ASC),
-  UNIQUE INDEX `cathegoryOfRecipesUniqueIndex` (`cathegory` ASC))
+CREATE TABLE IF NOT EXISTS `BookOfRecipes`.`CategoriesOfRecipes` (
+  `categoryOfRecipesId` INT NOT NULL,
+  `category` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`categoryOfRecipesId`),
+  UNIQUE INDEX `cathegoryOfRecipesIdUniqueIndex` (`categoryOfRecipesId` ASC))
 ENGINE = InnoDB;
 
-
+insert into categoriesofrecipes (categoryOfRecipesId, category) values (1, 'Hot dishes');
+insert into categoriesofrecipes (categoryofrecipesId, category) values (2, 'salads');
+insert into categoriesofrecipes (categoryofrecipesId, category) values (3, 'snacks');
+insert into categoriesofrecipes (categoryofrecipesId, category) values (4, 'soups');
+insert into categoriesofrecipes (categoryofrecipesId, category) values (5, 'baking');
+insert into categoriesofrecipes (categoryofrecipesId, category) values (6, 'desserts');
+insert into categoriesofrecipes (categoryofrecipesId, category) values (7, 'drinks');
 -- -----------------------------------------------------
 -- Table `BookOfRecipes`.`Recipes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `BookOfRecipes`.`Recipes` (
   `recipeId` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
+  `title` VARCHAR(45) NOT NULL,
   `userLogin` VARCHAR(45) NOT NULL,
   `uploadDate` DATE NOT NULL,
   `photo` TEXT NOT NULL,
   `description` TEXT NOT NULL,
   `categoryId` INT NOT NULL,
   PRIMARY KEY (`recipeId`),
-  UNIQUE INDEX `userIdUniqueIndex` (`userLogin` ASC),
   UNIQUE INDEX `recipeIdUniqueIndex` (`recipeId` ASC),
-  UNIQUE INDEX `name_UNIQUE` (`name` ASC),
-  CONSTRAINT `RecipesCathegoriesOfRecipesFK`
-    FOREIGN KEY (`categoryId`)
-    REFERENCES `BookOfRecipes`.`CathegoriesOfRecipes` (`cathegoryOfRecipesId`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
+  UNIQUE INDEX `name_UNIQUE` (`title` ASC),
+  INDEX `RecipesCategoriesOfRecipesFK_idx` (`categoryId` ASC),
   CONSTRAINT `RecipesUsersFK`
     FOREIGN KEY (`userLogin`)
     REFERENCES `BookOfRecipes`.`Users` (`login`)
     ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `RecipesCategoriesOfRecipesFK`
+    FOREIGN KEY (`categoryId`)
+    REFERENCES `BookOfRecipes`.`CategoriesOfRecipes` (`categoryOfRecipesId`)
+    ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
-
+insert into recipes (title, userLogin, uploadDate, photo, description, categoryId) values ('Hot dish', 'a', '2019-09-19', 'http://www.good-cook.ru/articles/2016/07/16-1-domashnyaya-eda.jpg', 'aaaaa', 1);
 -- -----------------------------------------------------
 -- Table `BookOfRecipes`.`Marks`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `BookOfRecipes`.`Marks` (
   `markId` INT NOT NULL,
   `recipeName` VARCHAR(45) NOT NULL,
-  `userLogin` VARCHAR(20) NOT NULL,
+  `userLogin` VARCHAR(45) NOT NULL,
   `mark` INT NOT NULL,
   PRIMARY KEY (`markId`),
   UNIQUE INDEX `markIdUniqueIndex` (`markId` ASC),
-  UNIQUE INDEX `recipeUniqueIndex` (`recipeName` ASC),
   UNIQUE INDEX `userUniqueIndex` (`userLogin` ASC),
   UNIQUE INDEX `markUniqueIndex` (`mark` ASC),
+  INDEX `MarksRecipesFK_idx` (`recipeName` ASC),
   CONSTRAINT `MarksRecipesFK`
     FOREIGN KEY (`recipeName`)
-    REFERENCES `BookOfRecipes`.`Recipes` (`name`)
+    REFERENCES `BookOfRecipes`.`Recipes` (`title`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `MarksUsersFK`
@@ -124,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `BookOfRecipes`.`Comments` (
   UNIQUE INDEX `commentUniqueIndex` (`comment` ASC),
   CONSTRAINT `CommentsRecipesFK`
     FOREIGN KEY (`recipeName`)
-    REFERENCES `BookOfRecipes`.`Recipes` (`name`)
+    REFERENCES `BookOfRecipes`.`Recipes` (`title`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `CommentsUsersFK`

@@ -13,8 +13,8 @@
 <div id="wrapper">
     <div id="header">
         <div id="logo">
-            <h1><a href="#">Culinary</a></h1>
-            <h2><a href="#">Template By Free CSS Templates</a></h2>
+            <h3><a href="#">Book of Recipes</a></h3>
+            <h6><a href="#">Recipes Website</a></h6>
         </div>
         <!-- end div#logo -->
     </div>
@@ -89,41 +89,55 @@
             <div id="sidebar">
                 <ul>
                     <li>
+                        <br>
                         <h2 class="categories">Lorem Ipsum</h2>
-                        <ul>
-                            <li><a href="#">Fusce dui neque fringilla</a></li>
-                            <li><a href="#">Eget tempor eget nonummy</a></li>
-                            <li><a href="#">Magna lacus bibendum mauris</a></li>
-                            <li><a href="#">Nec metus sed donec</a></li>
-                            <li><a href="#">Magna lacus bibendum mauris</a></li>
-                            <li><a href="#">Velit semper nisi molestie</a></li>
-                            <li><a href="#">Eget tempor eget nonummy</a></li>
-                        </ul>
+                        <div class="card" style="width: 12rem; height: 23rem;">
+                            <img src="http://www.good-cook.ru/articles/2016/07/16-1-domashnyaya-eda.jpg"
+                                 class="card-img-top" alt="food">
+                            <div class="card-body">
+                                <h5 class="card-title">Название карточки</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.</p>
+                                <br>
+                                <button type="button" class="btn btn-danger">
+                                    <a href="#" style="color: #FFFFFF">Переход куда-нибудь</a>
+                                </button>
+                            </div>
+                        </div>
                     </li>
                     <li>
+                        <br>
                         <h2>Volutpat Dolore</h2>
-                        <ul>
-                            <li><a href="#">Nec metus sed donec</a></li>
-                            <li><a href="#">Magna lacus bibendum mauris</a></li>
-                            <li><a href="#">Velit semper nisi molestie</a></li>
-                            <li><a href="#">Eget tempor eget nonummy</a></li>
-                            <li><a href="#">Nec metus sed donec</a></li>
-                            <li><a href="#">Magna lacus bibendum mauris</a></li>
-                            <li><a href="#">Velit semper nisi molestie</a></li>
-                        </ul>
+                        <div class="card" style="width: 12rem; height: 23rem;">
+                            <img src="https://static.1000.menu/img/content/24774/sloenyi-desert-v-stakane_1514977480_1_max.jpg"
+                                 class="card-img-top" alt="food">
+                            <div class="card-body">
+                                <h5 class="card-title">Название карточки</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.</p>
+                                <br>
+                                <button type="button" class="btn btn-danger">
+                                    <a href="#" style="color: #FFFFFF">Переход куда-нибудь</a>
+                                </button>
+                            </div>
+                        </div>
                     </li>
                     <li>
+                        <br>
                         <h2>Bebindum Mauris </h2>
-                        <ul>
-                            <li><a href="#">Nec metus sed donec</a></li>
-                            <li><a href="#">Magna lacus bibendum mauris</a></li>
-                            <li><a href="#">Velit semper nisi molestie</a></li>
-                            <li><a href="#">Eget tempor eget nonummy</a></li>
-                            <li><a href="#">Nec metus sed donec</a></li>
-                            <li><a href="#">Velit semper nisi molestie</a></li>
-                            <li><a href="#">Eget tempor eget nonummy</a></li>
-                            <li><a href="#">Velit semper nisi molestie</a></li>
-                        </ul>
+                        <div class="card" style="width: 12rem; height: 23rem;">
+                            <img src="https://img.poehali.tv/img/2018-11-12/fmt_114_24_shutterstock_1195703299.jpg"
+                                 class="card-img-top" alt="food">
+                            <div class="card-body">
+                                <h5 class="card-title">Название карточки</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.</p>
+                                <br>
+                                <button type="button" class="btn btn-danger">
+                                    <a href="#" style="color: #FFFFFF">Переход куда-нибудь</a>
+                                </button>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>

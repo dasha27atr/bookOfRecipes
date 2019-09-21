@@ -1,6 +1,6 @@
 package by.training.finalproject.command;
 
-import by.training.finalproject.dao.DAOException;
+import by.training.finalproject.dao.exception.DAOException;
 import by.training.finalproject.dao.impl.UserDAOImpl;
 import by.training.finalproject.entity.User;
 import by.training.finalproject.validator.Validator;
@@ -20,6 +20,17 @@ public class SignInCommand implements Command {
             try {
                 String login = request.getParameter("login");
                 User user = userDao.findByLogin(login);
+
+                request.getSession().setAttribute("userId", user.getUserId());
+                request.getSession().setAttribute("login", user.getLogin());
+                request.getSession().setAttribute("password", user.getPassword());
+                request.getSession().setAttribute("email", user.getEmail());
+                request.getSession().setAttribute("address", user.getAddress());
+                request.getSession().setAttribute("phone", user.getPhone());
+                request.getSession().setAttribute("firstName", user.getFirstName());
+                request.getSession().setAttribute("lastName", user.getLastName());
+                request.getSession().setAttribute("photo", user.getPhoto());
+                request.getSession().setAttribute("type", user.getType());
 
                 page = "/jsp/account.jsp";
             } catch (DAOException e) {

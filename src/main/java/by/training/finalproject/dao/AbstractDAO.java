@@ -1,5 +1,7 @@
 package by.training.finalproject.dao;
 
+import by.training.finalproject.dao.exception.DAOException;
+
 import java.io.Serializable;
 import java.util.List;
 

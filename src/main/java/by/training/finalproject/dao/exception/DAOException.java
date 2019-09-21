@@ -1,4 +1,4 @@
-package by.training.finalproject.dao;
+package by.training.finalproject.dao.exception;
 
 public class DAOException extends Exception {
     public DAOException() {

@@ -1,6 +1,6 @@
 package by.training.finalproject.validator;
 
-import by.training.finalproject.dao.DAOException;
+import by.training.finalproject.dao.exception.DAOException;
 import by.training.finalproject.dao.impl.UserDAOImpl;
 import by.training.finalproject.entity.User;
 
